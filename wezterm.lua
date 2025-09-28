@@ -15,8 +15,15 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 -- or, changing the font size and color scheme.
-config.font_size = 10
+config.font_size = 14
 config.color_scheme = "AdventureTime"
+config.window_decorations = "TITLE"
+
+local mux = wezterm.mux
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
 
 -- Keybindings
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
