@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 
 -- Define the home row keys to use for the shortcuts
 local home_row_keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l" }
+--local up_row_keys = { "q", "w", "e", "r", "t", "y", "u", "i", "o" }
 local num_shortcuts = #home_row_keys
 
 -- Font Settings
@@ -14,15 +15,26 @@ config.font_size = 14
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
 config.line_height = 1
 
-
 -- Colors
 config.colors = {
   cursor_bg = "white",
   cursor_border = "blue",
-
 }
 
 -- Appearance
+-- config.window_background_opacity = 0
+-- config.win32_system_backdrop = 'Mica'
+config.window_background_gradient = {
+  orientation = 'Vertical',
+
+  colors = {
+    '#0f0c29',
+    '#302b63',
+    '#24243e',
+  },
+  interpolation = 'Linear',
+  blend = 'Rgb',
+}
 config.color_scheme = "TokyoNight Moon"
 --config.window_decorations = "RESIZE"
 config.window_padding = {
@@ -70,7 +82,7 @@ config.keys = {
   },
   {
     mods = "LEADER",
-    key = "h",
+    key = "i",
     action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
   },
   { key = "0", mods = "CTRL",   action = act.PaneSelect },
